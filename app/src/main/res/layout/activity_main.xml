@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.upsale.upsaleapp.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_margin="0dp"
-            android:src="@drawable/topo"/>
+            android:src="@drawable/topo"
+            />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#6ac782"
-            android:layout_marginTop="7dp"
-            android:text="Home"/>
+            android:layout_margin="0.5dp"
+            android:text="Home"
+            android:layout_weight="0.1"
+            android:id="@+id/home"/>
 
-        <ImageView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/estoque"
-            android:layout_marginTop="15dp"/>
+            android:background="@drawable/financas"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:id="@+id/financas"/>
 
-        <ImageView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/estoque"
-            android:layout_marginTop="15dp"/>
+            android:background="@drawable/grafico"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:id="@+id/grafico"/>
 
-        <ImageView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/estoque"
-            android:layout_marginTop="15dp"/>
+            android:background="@drawable/estoque"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:id="@+id/estoque"/>
 
     </LinearLayout>
-</RelativeLayout>
+
