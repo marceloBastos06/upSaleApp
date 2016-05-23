@@ -14,11 +14,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        List<Categoria> categorias = WSUpSale.getCategorias();
-        if(categorias != null) {
-            for (Categoria c : categorias) {
-                System.out.println("DEBUG: " + c.getNome());
-            }
-        }
     }
 }

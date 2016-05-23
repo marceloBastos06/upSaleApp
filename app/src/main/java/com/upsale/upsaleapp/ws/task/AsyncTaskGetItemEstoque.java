@@ -1,8 +1,7 @@
 package com.upsale.upsaleapp.ws.task;
 
 import com.google.gson.reflect.TypeToken;
-import com.upsale.upsaleapp.model.Categoria;
-import com.upsale.upsaleapp.model.Estoque;
+import com.upsale.upsaleapp.model.ItemEstoque;
 import com.upsale.upsaleapp.ws.http.Http;
 
 import java.io.IOException;
@@ -11,14 +10,13 @@ import java.util.List;
 /**
  * Created by Mauricio R. Vidal on 23/05/2016.
  */
-public class AsyncTaskGetEstoque extends Task<Object, Void, List<Estoque>>{
-
+public class AsyncTaskGetItemEstoque extends Task<Object, Void, List<ItemEstoque>>{
     @Override
-    protected List<Estoque> doInBackground(Object... params) {
+    protected List<ItemEstoque> doInBackground(Object... params) {
         try {
             Http http = (Http) params[0];
             String json = http.solicitar();
-            return GSON.fromJson(json, new TypeToken<List<Estoque>>(){}.getType());
+            return GSON.fromJson(json, new TypeToken<List<ItemEstoque>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
         }

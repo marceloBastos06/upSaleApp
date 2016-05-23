@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
+import java.net.HttpURLConnection;
 
 /**
  * Created by Mauricio R. Vidal on 19/05/2016.
@@ -25,10 +25,10 @@ public class Put implements Http {
     @Override
     public String solicitar() throws IOException {
         URL obj = new URL(url);
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         //add reuqest header
-        con.setRequestMethod("POST");
+        con.setRequestMethod("PUT");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         String urlParameters = "";
@@ -36,7 +36,7 @@ public class Put implements Http {
             String param = chave +"="+form.get(chave).toString();
             urlParameters += param + "&";
         }
-        urlParameters = urlParameters.substring(0, urlParameters.length() -2);
+        urlParameters = urlParameters.substring(0, urlParameters.length() -1);
         // Send post request
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
