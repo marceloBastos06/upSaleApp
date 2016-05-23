@@ -12,7 +12,6 @@ import com.upsale.upsaleapp.model.Usuario;
 
 
 public class UsuarioDAO {
-    //essa coluna na tabela vai servir para abrir a tela de configuração do paciente ou do nutricionista!
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "usuario";
     private static final String[] COLUMS = new String[]{
