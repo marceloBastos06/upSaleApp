@@ -20,11 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.PrimeiraTelaActivity"
             android:label="@string/title_activity_primeira_tela"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".splash" />
+        <activity android:name=".ficancas" />
+        <activity android:name=".grafico" />
+        <activity android:name=".estoque"></activity>
     </application>
 
 </manifest>

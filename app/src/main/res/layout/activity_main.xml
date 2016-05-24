@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context="com.upsale.upsaleapp.MainActivity">
 
+<<<<<<< HEAD
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -44,5 +45,45 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
         android:id="@+id/estoque"/>
+=======
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topo"
+            android:layout_weight="2"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/financas"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:onClick="startFinancas"
+            android:id="@+id/financas"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/grafico"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:onClick="startGrafico"
+            android:id="@+id/grafico"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/estoque"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:onClick="startEstoque"
+            android:id="@+id/estoque"/>
+
+    </LinearLayout>
+>>>>>>> f7df257a9a2784f8497ae25cac3b257619488296
 
 </LinearLayout>
