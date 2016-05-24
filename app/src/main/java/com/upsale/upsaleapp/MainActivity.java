@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.Toast;
-=======
->>>>>>> f7df257a9a2784f8497ae25cac3b257619488296
 
 import com.upsale.upsaleapp.activity.PrimeiraTelaActivity;
 import com.upsale.upsaleapp.database.dao.UsuarioDAO;
