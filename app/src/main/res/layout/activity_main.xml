@@ -6,44 +6,43 @@
     android:orientation="vertical"
     tools:context="com.upsale.upsaleapp.MainActivity">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/topo"
-            />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/topo"
+        />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#6ac782"
-            android:layout_margin="0.5dp"
-            android:text="Home"
-            android:layout_weight="0.1"
-            android:id="@+id/home"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#6ac782"
+        android:layout_margin="0.5dp"
+        android:text="Home"
+        android:layout_weight="0.1"
+        android:id="@+id/home"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/financas"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:id="@+id/financas"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/financas"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:id="@+id/financas"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/grafico"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:id="@+id/grafico"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/grafico"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:id="@+id/grafico"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/estoque"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:id="@+id/estoque"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/estoque"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:id="@+id/estoque"/>
 
-    </LinearLayout>
-
+</LinearLayout>

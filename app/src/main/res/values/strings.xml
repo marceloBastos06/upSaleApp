@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">upSaleApp</string>
+    <string name="title_activity_primeira_tela">PrimeiraTelaActivity</string>
 </resources>
