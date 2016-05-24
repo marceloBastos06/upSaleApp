@@ -20,7 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash"></activity>
+        <activity android:name=".splash" />
+        <activity android:name=".ficancas" />
+        <activity android:name=".grafico" />
+        <activity android:name=".estoque"></activity>
     </application>
 
 </manifest>
