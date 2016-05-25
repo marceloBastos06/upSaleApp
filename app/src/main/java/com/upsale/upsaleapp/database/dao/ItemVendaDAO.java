@@ -50,6 +50,7 @@ public class ItemVendaDAO {
 
 
     public void salvar(List<ItemVenda> item_vendas) {
+        if(item_vendas == null)return;
         for(ItemVenda v : item_vendas){
             if(atualizar(v))continue;
             ContentValues values = new ContentValues();

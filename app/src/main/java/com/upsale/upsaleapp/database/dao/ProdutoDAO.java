@@ -46,6 +46,7 @@ public class ProdutoDAO {
     }
 
     public void salvar(List<Produto> produtos) {
+        if(produtos == null)return;
         for(Produto p : produtos){
             if(atualizar(p))continue;
             ContentValues values = new ContentValues();

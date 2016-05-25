@@ -46,6 +46,7 @@ public class CategoriaDAO {
 
 
     public void salvar(List<Categoria> categorias) {
+        if(categorias == null)return;
         for(Categoria c : categorias){
             if(atualizar(c))continue;
             ContentValues values = new ContentValues();

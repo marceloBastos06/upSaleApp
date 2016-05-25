@@ -50,6 +50,7 @@ public class EstoqueDAO {
 
 
     public void salvar(List<Estoque> estoques) {
+        if(estoques == null)return;
         for(Estoque e : estoques){
             if(atualizar(e))continue;
             ContentValues values = new ContentValues();
