@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class WSUpSale {
 
-    private static final String HOST = "http://192.168.1.201:8080/UpSale/webresources/upsale/";
+    private static final String HOST = "http://www2.bcc.unifal-mg.edu.br:8080/UpSale/webresources/upsale/";
 
     public static Integer autenticar(String login, String senha){
         Map<String, Object> form = new HashMap<>();
