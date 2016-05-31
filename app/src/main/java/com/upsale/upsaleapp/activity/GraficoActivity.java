@@ -1,13 +1,15 @@
-package com.upsale.upsaleapp;
+package com.upsale.upsaleapp.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ficancas extends AppCompatActivity {
+import com.upsale.upsaleapp.R;
+
+public class GraficoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_financas2);
+        setContentView(R.layout.activity_grafico);
     }
 }

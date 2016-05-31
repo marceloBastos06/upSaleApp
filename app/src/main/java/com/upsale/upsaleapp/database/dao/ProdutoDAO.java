@@ -103,5 +103,29 @@ public class ProdutoDAO {
     }
 
 
+    public Produto getProdutoPorId(long idProduto){
+        Cursor c = db.query(NAME_TABLE, COLUMS, COLUMS[0] + "="+ idProduto, null, null, null, null, null);
+        if (c.moveToFirst()) {
+            int id = c.getColumnIndex(COLUMS[0]);
+            int id_usuario = c.getColumnIndex(COLUMS[1]);
+            int id_categoria = c.getColumnIndex(COLUMS[2]);
+            int nome = c.getColumnIndex(COLUMS[3]);
+            int descricao = c.getColumnIndex(COLUMS[4]);
+            int preco = c.getColumnIndex(COLUMS[5]);
+            int lucro = c.getColumnIndex(COLUMS[6]);
+            Produto produto = new Produto();
+            produto.setId(c.getLong(id));
+            produto.setNome(c.getString(nome));
+            produto.setId_usuario(c.getLong(id_usuario));
+            produto.setId_categoria(c.getLong(id_categoria));
+            produto.setDescricao(c.getString(descricao));
+            produto.setLucro(c.getFloat(lucro));
+            produto.setPreco(c.getFloat(preco));
+            return produto;
+        }
+        return null;
+
+    }
+
 
 }

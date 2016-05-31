@@ -41,7 +41,8 @@ public class DatabaseCreator {
                     "nome TEXT(200),\n" +
                     "descricao TEXT(200),\n" +
                     "preco REAL,\n"+
-                    "data  TEXT(200)\n" +
+                    "data  TEXT(200),\n" +
+                    "lucro REAL\n"+
                     ");",
     };
 

@@ -13,13 +13,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splash" >
+        <activity android:name=".activity.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
 
         </activity>
 
@@ -28,9 +28,9 @@
             android:label="@string/title_activity_primeira_tela"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".ficancas" />
-        <activity android:name=".grafico" />
-        <activity android:name=".estoque"></activity>
+        <activity android:name=".activity.FinanciasActivity" />
+        <activity android:name=".activity.GraficoActivity" />
+        <activity android:name=".activity.EstoqueActivity"></activity>
     </application>
 
 </manifest>

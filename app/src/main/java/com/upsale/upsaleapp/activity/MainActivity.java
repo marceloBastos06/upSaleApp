@@ -1,4 +1,4 @@
-package com.upsale.upsaleapp;
+package com.upsale.upsaleapp.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import com.upsale.upsaleapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,19 +22,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void startFinancas(View view) {
         view.startAnimation(animAlpha);
-        Intent ActivityFinancas = new Intent(this, ficancas.class);
+        Intent ActivityFinancas = new Intent(this, FinanciasActivity.class);
         startActivity(ActivityFinancas);
     }
 
     public void startGrafico(View view) {
         view.startAnimation(animAlpha);
-        Intent ActivityGrafico = new Intent(this, grafico.class);
+        Intent ActivityGrafico = new Intent(this, GraficoActivity.class);
         startActivity(ActivityGrafico);
     }
 
     public void startEstoque(View view) {
         view.startAnimation(animAlpha);
-        Intent ActivityEstoque = new Intent(this, estoque.class);
+        Intent ActivityEstoque = new Intent(this, EstoqueActivity.class);
         startActivity(ActivityEstoque);
     }
 
