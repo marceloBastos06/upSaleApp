@@ -11,7 +11,7 @@ import com.upsale.upsaleapp.database.SQLiteHelper;
 import com.upsale.upsaleapp.model.Usuario;
 
 
-public class UsuarioDAO {
+public class UsuarioDAO extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "usuario";
     private static final String[] COLUMS = new String[]{

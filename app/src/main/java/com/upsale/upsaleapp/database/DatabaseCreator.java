@@ -16,7 +16,7 @@ public class DatabaseCreator {
                     ");",
             "CREATE TABLE estoque (\n" +
                     "id  INTEGER PRIMARY KEY,\n" +
-                    "data  TEXT(200)\n" +
+                    "data  DATE\n" +
                     ");",
             "CREATE TABLE item_estoque (\n" +
                     "id_estoque  INTEGER,\n" +
@@ -32,7 +32,7 @@ public class DatabaseCreator {
                     ");",
             "CREATE TABLE venda (\n" +
                     "id  INTEGER PRIMARY KEY,\n" +
-                    "data  TEXT(200)\n" +
+                    "data  DATE\n" +
                     ");",
             "CREATE TABLE produto (\n" +
                     "id  INTEGER PRIMARY KEY,\n" +
