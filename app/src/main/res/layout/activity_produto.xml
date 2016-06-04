@@ -53,8 +53,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/imageView2"
                 android:src="@drawable/produto"
-                android:layout_weight="0.8"
-                android:scaleType="fitXY" />
+                android:layout_weight="0.8" />
 
             <LinearLayout
                 android:orientation="vertical"
