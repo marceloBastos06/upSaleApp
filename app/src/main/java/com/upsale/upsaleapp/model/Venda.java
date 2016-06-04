@@ -5,13 +5,14 @@
  */
 package com.upsale.upsaleapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Mauricio R. Vidal
  */
-public class Venda {
+public class Venda implements Serializable {
     private long id;
     private Date data;
 

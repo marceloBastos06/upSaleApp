@@ -5,11 +5,13 @@
  */
 package com.upsale.upsaleapp.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mauricio R. Vidal
  */
-public class Categoria {
+public class Categoria implements Serializable{
     
     private long id;
     private String nome;

@@ -47,10 +47,8 @@ public class ItemEstoqueAdapter extends ArrayAdapter<ItemEstoque>{
         nome.setText(p.getNome());
         descricao.setText(p.getDescricao());
         quantidade.setText(ie.getQuantidade() + "");
-        progress.setMax(30);//Tamanho maximo do estoque
-        int val = (int)((ie.getQuantidade() / 30.0)*30);
-        System.out.println("DEBUG: "+ val);
-        progress.setProgress(val);
+        progress.setMax(ie.getQuantidadeMaxima());//Tamanho maximo do estoque
+        progress.setProgress(ie.getQuantidade());
         return convertView;
     }
 }

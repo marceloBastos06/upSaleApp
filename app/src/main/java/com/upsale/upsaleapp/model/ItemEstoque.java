@@ -5,15 +5,18 @@
  */
 package com.upsale.upsaleapp.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mauricio R. Vidal
  */
-public class ItemEstoque {
+public class ItemEstoque implements Serializable {
     
     private long id_estoque;
     private long id_produto;
     private int quantidade;
+    private int quantidadeMaxima;
 
     public long getId_estoque() {
         return id_estoque;
@@ -38,7 +41,12 @@ public class ItemEstoque {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
-    
-    
+
+    public int getQuantidadeMaxima() {
+        return quantidadeMaxima;
+    }
+
+    public void setQuantidadeMaxima(int quantidadeMaxima) {
+        this.quantidadeMaxima = quantidadeMaxima;
+    }
 }

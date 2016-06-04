@@ -22,6 +22,7 @@ public class DatabaseCreator {
                     "id_estoque  INTEGER,\n" +
                     "id_produto INTEGER, \n"+
                     "quantidade  INTEGER,\n" +
+                    "quantidade_maxima  INTEGER,\n" +
                     "Primary key(id_estoque, id_produto)" +
                     ");",
             "CREATE TABLE item_venda (\n" +

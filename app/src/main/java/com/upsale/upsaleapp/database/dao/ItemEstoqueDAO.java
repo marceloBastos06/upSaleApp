@@ -23,7 +23,7 @@ public class ItemEstoqueDAO {
     private static final String NAME_TABLE = "item_estoque";
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private static final String[] COLUMS = new String[]{
-            "id_produto","id_estoque", "quantidade",
+            "id_produto","id_estoque", "quantidade","quantidade_maxima",
     };
     private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS item_estoque";
     private static SQLiteDatabase db;
@@ -56,6 +56,7 @@ public class ItemEstoqueDAO {
             values.put(COLUMS[0], ie.getId_produto());
             values.put(COLUMS[1], ie.getId_estoque());
             values.put(COLUMS[2], ie.getQuantidade());
+            values.put(COLUMS[3], ie.getQuantidadeMaxima());
             db.insert(NAME_TABLE, null, values);
         }
         Log.i(DEBUB, "ItemEstoque salvo!!");
@@ -66,6 +67,7 @@ public class ItemEstoqueDAO {
         values.put(COLUMS[0], ie.getId_produto());
         values.put(COLUMS[1], ie.getId_estoque());
         values.put(COLUMS[2], ie.getQuantidade());
+        values.put(COLUMS[3], ie.getQuantidadeMaxima());
         return db.update(NAME_TABLE, values,COLUMS[0]+"= ? AND "+ COLUMS[1] + "= ?",new String[]{ie.getId_produto()+"", ie.getId_estoque()+""}) == 1;
 
     }
@@ -78,11 +80,13 @@ public class ItemEstoqueDAO {
             int id_produto = c.getColumnIndex(COLUMS[0]);
             int id_estoque = c.getColumnIndex(COLUMS[1]);
             int quantidade = c.getColumnIndex(COLUMS[2]);
+            int quantidade_maxima = c.getColumnIndex(COLUMS[3]);
             do {
                 ItemEstoque v = new ItemEstoque();
                 v.setId_produto(c.getLong(id_produto));
                 v.setId_estoque(c.getLong(id_estoque));
                 v.setQuantidade(c.getInt(quantidade));
+                v.setQuantidadeMaxima(c.getInt(quantidade_maxima));
                 lista.add(v);
             }while(c.moveToNext());
         }
