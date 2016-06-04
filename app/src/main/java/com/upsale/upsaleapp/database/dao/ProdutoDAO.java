@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Mauricio R. Vidal on 24/05/2016.
  */
-public class ProdutoDAO {
+public class ProdutoDAO extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "produto";
     private static final String[] COLUMS = new String[]{

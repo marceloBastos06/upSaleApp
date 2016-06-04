@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Mauricio R. Vidal on 23/05/2016.
  */
-public class CategoriaDAO {
+public class CategoriaDAO extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "categoria";
     private static final String[] COLUMS = new String[]{

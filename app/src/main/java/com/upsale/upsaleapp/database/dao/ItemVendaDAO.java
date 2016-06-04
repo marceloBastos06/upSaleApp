@@ -14,15 +14,17 @@ import com.upsale.upsaleapp.model.Venda;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
  * Created by Mauricio R. Vidal on 23/05/2016.
  */
-public class ItemVendaDAO {
+public class ItemVendaDAO extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "item_venda";
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private static final String[] COLUMS = new String[]{
             "id_produto","id_venda", "quantidade",
     };
@@ -87,6 +89,64 @@ public class ItemVendaDAO {
                 lista.add(v);
             }while(c.moveToNext());
         }
+        return lista;
+    }
+
+//    public int getQuantidadeProdutosPorCategoria(String categoria){
+//        Cursor c = db.rawQuery("SELECT sum(i.quantidade) as qtdTotal FROM categoria as c, produto as p, item_venda as i " +
+//                "WHERE c.id = p.id_categoria and p.id = i.id_produto and c.nome = ?", new String[]{categoria});
+//
+//        int qtd =0;
+//        if (c.moveToFirst()) {
+//            qtd = c.getInt(c.getColumnIndex("qtdTotal"));
+//        }
+//
+//        return qtd;
+//    }
+
+    public List<List<String>> getQuantidadeProdutosPorCategoriaPorPeriodo(String inicioPeriodo, String fimPeriodo){
+        Cursor cursor = db.rawQuery("SELECT c.nome as nomeCategoria, sum(i.quantidade) as qtdTotal , v.data as data" +
+                " FROM categoria as c, produto as p, item_venda as i, venda as v" +
+                " WHERE c.id = p.id_categoria and p.id = i.id_produto and v.id = i.id_venda and" +
+                " v.data >= ? and v.data <= ?" +
+                " GROUP BY c.id ORDER BY qtdTotal ASC", new String[]{inicioPeriodo, fimPeriodo});
+
+        List<List<String>> lista = new ArrayList<>();
+//        ArrayList<String> a = new ArrayList<>();
+//        a.add("Limpeza");
+//        a.add("60");
+//        a.add("2016-01-03");
+//        lista.add(a);
+//        a = new ArrayList<>();
+//        a.add("Eletrônico");
+//        a.add("30");
+//        a.add("2016-01-03");
+//        lista.add(a);
+        if (cursor.moveToFirst()) {
+//            a.add("Teste");
+//            a.add("Teste2");
+//            lista.add(a);
+            int categogia =cursor.getColumnIndex("nomeCategoria");
+            int qtd = cursor.getColumnIndex("qtdTotal");
+            int data = cursor.getColumnIndex("data");
+            do {
+                List<String> l = new ArrayList<>();
+                l.add(cursor.getString(categogia));
+                l.add("" + cursor.getInt(qtd));
+                l.add(cursor.getString(data));
+                lista.add(l);
+            }while(cursor.moveToNext());
+        }
+
+//        for (int i = lista.size() -1 ; i>=0 ; i--){
+//            String [] aux = lista.get(i).get(2).split("/");
+//            Calendar date = new GregorianCalendar(Integer.parseInt(aux[2]), Integer.parseInt(aux[1]), Integer.parseInt(aux[0]));
+//
+//            if(inicioPeriodo.after(date) || fimPeriodo.before(date)){
+//                lista.remove(i);
+//            }
+//        }
+
         return lista;
     }
 }

@@ -18,10 +18,9 @@ import java.util.List;
 /**
  * Created by Mauricio R. Vidal on 23/05/2016.
  */
-public class ItemEstoqueDAO {
+public class ItemEstoqueDAO  extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "item_estoque";
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private static final String[] COLUMS = new String[]{
             "id_produto","id_estoque", "quantidade","quantidade_maxima",
     };

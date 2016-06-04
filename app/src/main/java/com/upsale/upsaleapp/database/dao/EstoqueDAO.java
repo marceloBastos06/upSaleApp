@@ -19,10 +19,10 @@ import java.util.List;
 /**
  * Created by Mauricio R. Vidal on 23/05/2016.
  */
-public class EstoqueDAO {
+public class EstoqueDAO extends InterfaceDAO{
     private static final String DEBUB = "DEBUG: ";
     private static final String NAME_TABLE = "estoque";
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     private static final String[] COLUMS = new String[]{
             "id", "data",
     };
