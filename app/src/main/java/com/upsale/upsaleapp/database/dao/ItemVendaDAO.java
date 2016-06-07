@@ -114,4 +114,27 @@ public class ItemVendaDAO extends InterfaceDAO{
         }
         return lista;
     }
+
+    public List<List<String>> getQuantidadeProdutosPorPeriodo(String inicioPeriodo, String fimPeriodo){
+        Cursor cursor = db.rawQuery("SELECT p.nome as nomeProduto, (p.preco * sum(i.quantidade)) as subTotal" +
+                " FROM produto as p, item_venda as i, venda as v" +
+                " WHERE p.id = i.id_produto and i.id_venda = v.id and" +
+                " v.data >= ? and v.data <= ?" +
+                " GROUP BY p.nome", new String[]{inicioPeriodo, fimPeriodo});
+        List<List<String>> lista = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            int nome = cursor.getColumnIndex("nomeProduto");
+            int subTotal = cursor.getColumnIndex("subTotal");
+            //int preco = cursor.getColumnIndex("precoProduto");
+            //int qtd = cursor.getColumnIndex("quantidadeVendida");
+            do {
+                List<String> l = new ArrayList<>();
+                l.add(cursor.getString(nome));
+                l.add("" + cursor.getDouble(subTotal));
+                //l.add(cursor.getString(qtd));
+                lista.add(l);
+            }while(cursor.moveToNext());
+        }
+        return  lista;
+    }
 }

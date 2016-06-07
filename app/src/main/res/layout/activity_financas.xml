@@ -13,12 +13,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/topo"
-                android:layout_weight="1.5"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topo"
+            android:layout_weight="1.5"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -84,17 +84,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:text="Data inicio: " />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="Data inicio: " />
 
-            <TextView
-                android:id="@+id/tv_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"/>
+                <TextView
+                    android:id="@+id/tv_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -125,6 +125,13 @@
             android:onClick=""
             android:text="Calcular"
             android:layout_gravity="right" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.5" />
 
 
     </LinearLayout>
