@@ -28,6 +28,7 @@
         <activity android:name=".activity.FinanciasActivity" />
         <activity android:name=".activity.GraficoActivity" />
         <activity android:name=".activity.EstoqueActivity" />
+        <activity android:name=".activity.GraficoActivity2" />
         <activity
             android:name=".activity.ProdutoActivity"
             android:label="@string/title_activity_produto"

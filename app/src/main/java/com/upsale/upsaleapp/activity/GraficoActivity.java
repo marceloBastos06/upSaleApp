@@ -1,8 +1,14 @@
 package com.upsale.upsaleapp.activity;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -16,120 +22,89 @@ import com.upsale.upsaleapp.R;
 import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class GraficoActivity extends AppCompatActivity {
+
+    public static int year;
+    public static int month;
+    public static int day;
+    private static TextView tv_data;
+    private static TextView tv_data2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafico);
-        ItemVendaDAO iV = new ItemVendaDAO(this);
-        //List<List<String>> lista = iV.getQuantidadeProdutosPorCategoriaPorPeriodo(new Date(2016,01,01), new Date(2016,12,31));
-        Calendar a  = new GregorianCalendar(2015,01,01);
-        List<List<String>> lista = iV.getQuantidadeProdutosPorCategoriaPorPeriodo("2016-04-01", "2016-05-05");
-        //display(lista);
-        if(lista.size() != 0) {
-            HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
-            BarData data = new BarData(getXAxisValues(lista), getDataSet(lista));
-            chart.setData(data);
-            chart.setDescription("My Chart");
-            chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-            chart.animateXY(2000, 2000);
+        tv_data = (TextView) findViewById(R.id.tv_data);
+        tv_data2 = (TextView) findViewById(R.id.tv_data2);
 
-            chart.invalidate();
-        }else{
-            display();
+    }
+
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
+
+            System.out.println(day);
+            System.out.println(month);
+            System.out.println(year);
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            month++;
+            tv_data.setText(day + "/" + month + "/" + year);
         }
     }
 
-    private ArrayList<IBarDataSet> getDataSet(List<List<String>> lista) {
-        ArrayList<IBarDataSet> dataSets = null;
+    public static class DatePickerFragment2 extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
 
-        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-        for (int i=0; i< lista.size(); i++){
-            valueSet1.add(new BarEntry(Float.parseFloat(lista.get(i).get(1)),i));
+            System.out.println(day);
+            System.out.println(month);
+            System.out.println(year);
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
-        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
-        barDataSet1.setColor(Color.rgb(0, 155, 0));
-//        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
-//        barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
-
-        dataSets = new ArrayList<>();
-        dataSets.add(barDataSet1);
-        //dataSets.add(barDataSet2);
-        return dataSets;
-    }
-
-    private ArrayList<String> getXAxisValues(List<List<String>> lista) {
-        ArrayList<String> xAxis = new ArrayList<>();
-        for(List<String> l : lista){
-            xAxis.add(l.get(0));
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            month++;
+            tv_data2.setText(day + "/" + month + "/" + year);
+            System.out.println("");
         }
-
-        return xAxis;
     }
 
-/*  private ArrayList<IBarDataSet> getDataSet() {
-        ArrayList<IBarDataSet> dataSets = null;
-
-        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
-        BarEntry v1e1 = new BarEntry(110.000f, 0); // Jan
-        valueSet1.add(v1e1);
-        BarEntry v1e2 = new BarEntry(40.000f, 1); // Feb
-        valueSet1.add(v1e2);
-        BarEntry v1e3 = new BarEntry(60.000f, 2); // Mar
-        valueSet1.add(v1e3);
-        BarEntry v1e4 = new BarEntry(30.000f, 3); // Apr
-        valueSet1.add(v1e4);
-        BarEntry v1e5 = new BarEntry(90.000f, 4); // May
-        valueSet1.add(v1e5);
-        BarEntry v1e6 = new BarEntry(100.000f, 5); // Jun
-        valueSet1.add(v1e6);
-
-        ArrayList<BarEntry> valueSet2 = new ArrayList<>();
-        BarEntry v2e1 = new BarEntry(150.000f, 0); // Jan
-        valueSet2.add(v2e1);
-        BarEntry v2e2 = new BarEntry(90.000f, 1); // Feb
-        valueSet2.add(v2e2);
-        BarEntry v2e3 = new BarEntry(120.000f, 2); // Mar
-        valueSet2.add(v2e3);
-        BarEntry v2e4 = new BarEntry(60.000f, 3); // Apr
-        valueSet2.add(v2e4);
-        BarEntry v2e5 = new BarEntry(20.000f, 4); // May
-        valueSet2.add(v2e5);
-        BarEntry v2e6 = new BarEntry(80.000f, 5); // Jun
-        valueSet2.add(v2e6);
-
-        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
-        barDataSet1.setColor(Color.rgb(0, 155, 0));
-        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
-        barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
-
-        dataSets = new ArrayList<>();
-        dataSets.add(barDataSet1);
-        dataSets.add(barDataSet2);
-        return dataSets;
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
     }
 
-    private ArrayList<String> getXAxisValues() {
-        ArrayList<String> xAxis = new ArrayList<>();
-        xAxis.add("JAN");
-        xAxis.add("FEB");
-        xAxis.add("MAR");
-        xAxis.add("APR");
-        xAxis.add("MAY");
-        xAxis.add("JUN");
-        return xAxis;
-    }*/
-    private void display() {
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.textView4);
+    public void showDatePickerDialog2(View v) {
+        DialogFragment newFragment = new DatePickerFragment2();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
 
-        quantityTextView.setText(quantityTextView.getText() + "\n" + "Não há produtos");
+    public void startTelaGraficos2(View view){
+        Intent ActivityGrafico2 = new Intent(GraficoActivity.this, GraficoActivity2.class);
+        ActivityGrafico2.putExtra("dataInicio", tv_data.getText().toString());
+        ActivityGrafico2.putExtra("dataFim", tv_data2.getText().toString());
+        startActivity(ActivityGrafico2);
     }
 }
