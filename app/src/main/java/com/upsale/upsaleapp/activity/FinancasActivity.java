@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.upsale.upsaleapp.R;
 import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
+import com.upsale.upsaleapp.utils.Dialogs;
 
 import java.util.Calendar;
 import java.util.List;
@@ -37,9 +38,13 @@ public class FinancasActivity extends AppCompatActivity {
 
     public void startTelaFinancas2(View view){
         Intent ActivityFinancas2 = new Intent(FinancasActivity.this, FinancasActivity2.class);
-        ActivityFinancas2.putExtra("dataInicio", tv_data.getText().toString());
-        ActivityFinancas2.putExtra("dataFim", tv_data2.getText().toString());
-        startActivity(ActivityFinancas2);
+        if (tv_data.getText() == "" || tv_data2.getText() == "") {
+            Dialogs.showDialog(this, "Erro", "As datas do período não foram definidas corretamente");
+        } else{
+            ActivityFinancas2.putExtra("dataInicio", tv_data.getText().toString());
+            ActivityFinancas2.putExtra("dataFim", tv_data2.getText().toString());
+            startActivity(ActivityFinancas2);
+        }
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {

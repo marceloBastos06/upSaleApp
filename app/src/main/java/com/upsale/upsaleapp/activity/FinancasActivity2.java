@@ -1,5 +1,6 @@
 package com.upsale.upsaleapp.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.upsale.upsaleapp.R;
 import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
+import com.upsale.upsaleapp.utils.Dialogs;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -35,14 +39,20 @@ public class FinancasActivity2 extends AppCompatActivity {
 
         dataInicio = params.getString("dataInicio");
         dataFim = params.getString("dataFim");
+        total = (TextView) findViewById(R.id.total);
 
         lista = iV.getQuantidadeProdutosPorPeriodo(dataInicio, dataFim);
 
-        listView.setAdapter(carregarListView());
-        total = (TextView) findViewById(R.id.total);
+        if (lista.size() != 0){
+            listView.setAdapter(carregarListView());
+            total.setText("Total: " + NumberFormat.getCurrencyInstance().format(totalVenda));
+        }else{
+            noProductsMessage(params.getString("dataInicio"), params.getString("dataFim"));
+            //Intent ActivityFinancas = new Intent(FinancasActivity2.this, FinancasActivity.class);
+            //startActivity(ActivityFinancas);
+        }
 
 
-        total.setText("Total: " + NumberFormat.getCurrencyInstance().format(totalVenda));
     }
 
     private ArrayAdapter<List<String>> carregarListView(){
@@ -71,4 +81,9 @@ public class FinancasActivity2 extends AppCompatActivity {
         return adapter;
     }
 
+    public void noProductsMessage(String inicio, String fim) {
+        listView.setVisibility(View.INVISIBLE);
+        total.setVisibility(View.INVISIBLE);
+        Dialogs.showDialog(this, "Erro", "Nesse periodo: " + inicio + "/" + fim +  " não houve vendas");
+    }
 }
