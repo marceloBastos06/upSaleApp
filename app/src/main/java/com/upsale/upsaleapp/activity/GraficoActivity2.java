@@ -33,7 +33,6 @@ public class GraficoActivity2 extends AppCompatActivity {
             dataInicio = formatDate(params.getString("dataInicio"));
             dataFim = formatDate(params.getString("dataFim"));
         }
-        //List<List<String>> lista = iV.getQuantidadeProdutosPorCategoriaPorPeriodo("2016-05-01", "2016-05-05");
         List<List<String>> lista = iV.getQuantidadeProdutosPorCategoriaPorPeriodo(dataInicio, dataFim);
         if(lista.size() != 0) {
             HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
@@ -72,12 +71,9 @@ public class GraficoActivity2 extends AppCompatActivity {
 
         BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Quantidade de produtos por categoria");
         barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
-//        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
-//        barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
 
         dataSets = new ArrayList<>();
         dataSets.add(barDataSet1);
-        //dataSets.add(barDataSet2);
         return dataSets;
     }
 
@@ -95,13 +91,8 @@ public class GraficoActivity2 extends AppCompatActivity {
                 R.id.textView4);
         HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
         chart.setVisibility(View.INVISIBLE);
-
-        //textView.setText(quantityTextView.getText() + "\n" + "Não há produtos");
         String message = "Não há categorias de produtos mais vendidos entre as datas " + inicio + " e " + fim + ".\n";
         message += "Por favor tente outro período.";
-        android.view.ViewGroup.LayoutParams params = textView.getLayoutParams();
-        params.height = ActionBar.LayoutParams.MATCH_PARENT;
-        textView.setLayoutParams(params);
         textView.setText(message);
     }
 }
