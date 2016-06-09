@@ -84,6 +84,6 @@ public class FinancasActivity2 extends AppCompatActivity {
     public void noProductsMessage(String inicio, String fim) {
         listView.setVisibility(View.INVISIBLE);
         total.setVisibility(View.INVISIBLE);
-        Dialogs.showDialog(this, "Erro", "Nesse periodo: " + inicio + "/" + fim +  " não houve vendas");
+        Dialogs.showDialog(this, "Erro", "Nesse periodo: " + inicio + " a " + fim +  " não houve vendas");
     }
 }
