@@ -26,9 +26,10 @@ import java.util.concurrent.ExecutionException;
  */
 public class WSUpSale {
 
-    //www2.bcc.unifal-mg.edu.br
+    //www2.bcc.unifal-mg.edu.br /192.168.42.165:
     //http://192.168.0.100
 
+    //private static final String HOST = "http://192.168.42.165:8080/UpSale/webresources/upsale/";
     private static final String HOST = "http://www2.bcc.unifal-mg.edu.br:8080/UpSale/webresources/upsale/";
 
     public static Integer autenticar(String login, String senha){

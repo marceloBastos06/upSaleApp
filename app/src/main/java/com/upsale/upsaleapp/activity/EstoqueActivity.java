@@ -25,11 +25,15 @@ public class EstoqueActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estoque);
+
         listView = (ListView) findViewById(R.id.listView);
+
         daoItemEstoque = new ItemEstoqueDAO(this);
         daoProduto = new ProdutoDAO(this);
+
         listView.setAdapter(carregarListView());
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ItemEstoque ie = adapter.getItem(position);

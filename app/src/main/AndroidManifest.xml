@@ -20,18 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.PrimeiraTelaActivity"
             android:label="@string/title_activity_primeira_tela"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".activity.FinanciasActivity" />
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.FinancasActivity" />
         <activity android:name=".activity.GraficoActivity" />
         <activity android:name=".activity.EstoqueActivity" />
+        <activity android:name=".activity.GraficoActivity2" />
         <activity
             android:name=".activity.ProdutoActivity"
             android:label="@string/title_activity_produto"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.FinancasActivity2"></activity>
     </application>
 
 </manifest>

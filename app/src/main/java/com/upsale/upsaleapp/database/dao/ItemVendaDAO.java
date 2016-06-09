@@ -11,6 +11,7 @@ import com.upsale.upsaleapp.database.SQLiteHelper;
 import com.upsale.upsaleapp.model.ItemVenda;
 import com.upsale.upsaleapp.model.Venda;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,18 +93,6 @@ public class ItemVendaDAO extends InterfaceDAO{
         return lista;
     }
 
-//    public int getQuantidadeProdutosPorCategoria(String categoria){
-//        Cursor c = db.rawQuery("SELECT sum(i.quantidade) as qtdTotal FROM categoria as c, produto as p, item_venda as i " +
-//                "WHERE c.id = p.id_categoria and p.id = i.id_produto and c.nome = ?", new String[]{categoria});
-//
-//        int qtd =0;
-//        if (c.moveToFirst()) {
-//            qtd = c.getInt(c.getColumnIndex("qtdTotal"));
-//        }
-//
-//        return qtd;
-//    }
-
     public List<List<String>> getQuantidadeProdutosPorCategoriaPorPeriodo(String inicioPeriodo, String fimPeriodo){
         Cursor cursor = db.rawQuery("SELECT c.nome as nomeCategoria, sum(i.quantidade) as qtdTotal , v.data as data" +
                 " FROM categoria as c, produto as p, item_venda as i, venda as v" +
@@ -112,20 +101,7 @@ public class ItemVendaDAO extends InterfaceDAO{
                 " GROUP BY c.id ORDER BY qtdTotal ASC", new String[]{inicioPeriodo, fimPeriodo});
 
         List<List<String>> lista = new ArrayList<>();
-//        ArrayList<String> a = new ArrayList<>();
-//        a.add("Limpeza");
-//        a.add("60");
-//        a.add("2016-01-03");
-//        lista.add(a);
-//        a = new ArrayList<>();
-//        a.add("Eletrônico");
-//        a.add("30");
-//        a.add("2016-01-03");
-//        lista.add(a);
         if (cursor.moveToFirst()) {
-//            a.add("Teste");
-//            a.add("Teste2");
-//            lista.add(a);
             int categogia =cursor.getColumnIndex("nomeCategoria");
             int qtd = cursor.getColumnIndex("qtdTotal");
             int data = cursor.getColumnIndex("data");
@@ -137,16 +113,30 @@ public class ItemVendaDAO extends InterfaceDAO{
                 lista.add(l);
             }while(cursor.moveToNext());
         }
-
-//        for (int i = lista.size() -1 ; i>=0 ; i--){
-//            String [] aux = lista.get(i).get(2).split("/");
-//            Calendar date = new GregorianCalendar(Integer.parseInt(aux[2]), Integer.parseInt(aux[1]), Integer.parseInt(aux[0]));
-//
-//            if(inicioPeriodo.after(date) || fimPeriodo.before(date)){
-//                lista.remove(i);
-//            }
-//        }
-
         return lista;
+    }
+
+    public List<List<String>> getQuantidadeProdutosPorPeriodo(String inicioPeriodo, String fimPeriodo){
+        Cursor cursor = db.rawQuery("SELECT p.nome as nomeProduto, (p.preco * sum(i.quantidade)) as subTotal" +
+                " FROM produto as p, item_venda as i, venda as v" +
+                " WHERE p.id = i.id_produto and i.id_venda = v.id and" +
+                " v.data >= ? and v.data <= ?" +
+                " GROUP BY p.nome", new String[]{inicioPeriodo, fimPeriodo});
+        List<List<String>> lista = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            int nome = cursor.getColumnIndex("nomeProduto");
+            int subTotal = cursor.getColumnIndex("subTotal");
+            //int preco = cursor.getColumnIndex("precoProduto");
+            //int qtd = cursor.getColumnIndex("quantidadeVendida");
+            do {
+                List<String> l = new ArrayList<>();
+                l.add(cursor.getString(nome));
+                l.add(NumberFormat.getCurrencyInstance().format(cursor.getDouble(subTotal)));
+                l.add(cursor.getDouble(subTotal) + "");
+                //l.add(cursor.getString(qtd));
+                lista.add(l);
+            }while(cursor.moveToNext());
+        }
+        return  lista;
     }
 }

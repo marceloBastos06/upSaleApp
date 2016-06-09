@@ -1,20 +1,24 @@
 package com.upsale.upsaleapp.activity;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.upsale.upsaleapp.R;
+import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
 
 import java.util.Calendar;
+import java.util.List;
 
-public class FinanciasActivity extends AppCompatActivity {
+public class FinancasActivity extends AppCompatActivity {
+
 
     public static int year;
     public static int month;
@@ -29,7 +33,13 @@ public class FinanciasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_financas);
         tv_data = (TextView) findViewById(R.id.tv_data);
         tv_data2 = (TextView) findViewById(R.id.tv_data2);
+    }
 
+    public void startTelaFinancas2(View view){
+        Intent ActivityFinancas2 = new Intent(FinancasActivity.this, FinancasActivity2.class);
+        ActivityFinancas2.putExtra("dataInicio", tv_data.getText().toString());
+        ActivityFinancas2.putExtra("dataFim", tv_data2.getText().toString());
+        startActivity(ActivityFinancas2);
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {

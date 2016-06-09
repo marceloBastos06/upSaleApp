@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startFinancas(View view) {
         view.startAnimation(animAlpha);
-        Intent ActivityFinancas = new Intent(this, FinanciasActivity.class);
+        Intent ActivityFinancas = new Intent(this, FinancasActivity.class);
         startActivity(ActivityFinancas);
     }
 
