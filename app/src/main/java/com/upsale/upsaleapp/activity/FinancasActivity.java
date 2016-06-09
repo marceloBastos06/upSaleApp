@@ -1,6 +1,7 @@
 package com.upsale.upsaleapp.activity;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +17,9 @@ import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
 import java.util.Calendar;
 import java.util.List;
 
-public class FinanciasActivity extends AppCompatActivity {
+public class FinancasActivity extends AppCompatActivity {
 
-    private ListView listView;
+
     public static int year;
     public static int month;
     public static int day;
@@ -32,17 +33,13 @@ public class FinanciasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_financas);
         tv_data = (TextView) findViewById(R.id.tv_data);
         tv_data2 = (TextView) findViewById(R.id.tv_data2);
+    }
 
-        ItemVendaDAO iV = new ItemVendaDAO(this);
-        List<List<String>> lista = iV.getQuantidadeProdutosPorPeriodo("2016-05-01", "2016-05-05");
-
-        if(lista.size() != 0) {
-            listView = (ListView) findViewById(R.id.listView);
-
-
-        }else{
-            display();
-        }
+    public void startTelaFinancas2(View view){
+        Intent ActivityFinancas2 = new Intent(FinancasActivity.this, FinancasActivity2.class);
+        ActivityFinancas2.putExtra("dataInicio", tv_data.getText().toString());
+        ActivityFinancas2.putExtra("dataFim", tv_data2.getText().toString());
+        startActivity(ActivityFinancas2);
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -100,13 +97,4 @@ public class FinanciasActivity extends AppCompatActivity {
         DialogFragment newFragment = new DatePickerFragment2();
         newFragment.show(getFragmentManager(), "datePicker");
     }
-
-    private void display() {
-        TextView quantityTextView = (TextView) findViewById(R.id.textView4);
-        quantityTextView.setText(quantityTextView.getText() + "\n" + "Não há produtos");
-    }
-
-    // public void class exibir (String periodo_inicio, String periodo_fim){
-
-    //}
 }

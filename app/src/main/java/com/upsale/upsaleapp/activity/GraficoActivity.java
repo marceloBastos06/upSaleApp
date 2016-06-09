@@ -41,7 +41,6 @@ public class GraficoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grafico);
         tv_data = (TextView) findViewById(R.id.tv_data);
         tv_data2 = (TextView) findViewById(R.id.tv_data2);
-
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {

@@ -11,6 +11,7 @@ import com.upsale.upsaleapp.database.SQLiteHelper;
 import com.upsale.upsaleapp.model.ItemVenda;
 import com.upsale.upsaleapp.model.Venda;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -130,7 +131,8 @@ public class ItemVendaDAO extends InterfaceDAO{
             do {
                 List<String> l = new ArrayList<>();
                 l.add(cursor.getString(nome));
-                l.add("" + cursor.getDouble(subTotal));
+                l.add(NumberFormat.getCurrencyInstance().format(cursor.getDouble(subTotal)));
+                l.add(cursor.getDouble(subTotal) + "");
                 //l.add(cursor.getString(qtd));
                 lista.add(l);
             }while(cursor.moveToNext());

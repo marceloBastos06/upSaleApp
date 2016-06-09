@@ -122,16 +122,9 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick=""
+            android:onClick="startTelaFinancas2"
             android:text="Calcular"
             android:layout_gravity="right" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1.5" />
 
 
     </LinearLayout>
