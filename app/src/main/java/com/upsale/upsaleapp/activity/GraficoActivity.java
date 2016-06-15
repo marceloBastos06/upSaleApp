@@ -20,6 +20,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.upsale.upsaleapp.R;
 import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
+import com.upsale.upsaleapp.utils.Dialogs;
 
 import java.util.ArrayList;
 
@@ -102,8 +103,12 @@ public class GraficoActivity extends AppCompatActivity {
 
     public void startTelaGraficos2(View view){
         Intent ActivityGrafico2 = new Intent(GraficoActivity.this, GraficoActivity2.class);
-        ActivityGrafico2.putExtra("dataInicio", tv_data.getText().toString());
-        ActivityGrafico2.putExtra("dataFim", tv_data2.getText().toString());
-        startActivity(ActivityGrafico2);
+        if (tv_data.getText() == "" || tv_data2.getText() == "") {
+            Dialogs.showDialog(this, "Erro", "As datas do período não foram definidas corretamente");
+        } else{
+            ActivityGrafico2.putExtra("dataInicio", tv_data.getText().toString());
+            ActivityGrafico2.putExtra("dataFim", tv_data2.getText().toString());
+            startActivity(ActivityGrafico2);
+        }
     }
 }

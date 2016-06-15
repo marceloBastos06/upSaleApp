@@ -15,6 +15,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.upsale.upsaleapp.R;
 import com.upsale.upsaleapp.database.dao.ItemVendaDAO;
+import com.upsale.upsaleapp.utils.Dialogs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,8 +92,7 @@ public class GraficoActivity2 extends AppCompatActivity {
                 R.id.textView4);
         HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
         chart.setVisibility(View.INVISIBLE);
-        String message = "Não há categorias de produtos mais vendidos entre as datas " + inicio + " e " + fim + ".\n";
-        message += "Por favor tente outro período.";
-        textView.setText(message);
+        textView.setVisibility(View.INVISIBLE);
+        Dialogs.showDialog(this, "Aviso", "Nesse periodo: " + inicio + " a " + fim +  " não houve vendas");
     }
 }
