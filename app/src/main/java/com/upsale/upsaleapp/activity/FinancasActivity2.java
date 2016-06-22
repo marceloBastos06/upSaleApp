@@ -37,8 +37,8 @@ public class FinancasActivity2 extends AppCompatActivity {
         ItemVendaDAO iV = new ItemVendaDAO(this);
         Bundle params = this.getIntent().getExtras();
 
-        dataInicio = params.getString("dataInicio");
-        dataFim = params.getString("dataFim");
+        dataInicio = formatDate(params.getString("dataInicio"));
+        dataFim = formatDate(params.getString("dataFim"));
         total = (TextView) findViewById(R.id.total);
 
         lista = iV.getQuantidadeProdutosPorPeriodo(dataInicio, dataFim);
@@ -81,9 +81,23 @@ public class FinancasActivity2 extends AppCompatActivity {
         return adapter;
     }
 
+    private String formatDate(String date){
+        String [] aux = date.split("/");
+        String newDate = aux[2] + "-";
+        if(Integer.parseInt(aux[1]) < 10){
+            newDate += "0";
+        }
+        newDate += aux[1] + "-";
+        if(Integer.parseInt(aux[0]) < 10){
+            newDate += "0";
+        }
+        newDate += aux[0];
+        return newDate;
+    }
+
     public void noProductsMessage(String inicio, String fim) {
         listView.setVisibility(View.INVISIBLE);
         total.setVisibility(View.INVISIBLE);
-        Dialogs.showDialog(this, "Aviso", "Nesse periodo: " + inicio + " a " + fim +  " não houve vendas");
+        Dialogs.showDialog(this, "Erro", "Nesse periodo: " + inicio + " a " + fim +  " não houve vendas");
     }
 }
